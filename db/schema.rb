@@ -13,15 +13,16 @@
 ActiveRecord::Schema.define(version: 2020_07_14_131340) do
 
   create_table "articles", force: :cascade do |t|
-    t.string "title"
-    t.text "text"
+    t.string "title", null: false
+    t.text "text", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["title"], name: "index_articles_on_title", unique: true
   end
 
   create_table "comments", force: :cascade do |t|
-    t.string "commenter"
-    t.text "body"
+    t.string "commenter", null: false
+    t.text "body", null: false
     t.integer "article_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
